@@ -23,25 +23,20 @@ document
 
 // DELETE USER
 function deleteUser(id) {
-  fetch(`/api/v1/users/${id}`, {
-    method: "DELETE",
-  })
-    .then(() => location.reload())
-    .catch((err) => console.error(err));
+  fetch(`/api/v1/users/${id}`, { method: "DELETE" }).then(() =>
+    location.reload()
+  );
 }
 
 // EDIT USER (simple prompt version)
 function editUser(id) {
-  const name = prompt("Enter new name:");
+  const firstName = prompt("Enter new first name:");
   const lastName = prompt("Enter new last name:");
-  const email = prompt("Enter new email:");
-  const message = prompt("Enter new message:");
+  const age = prompt("Enter new age:");
 
   fetch(`/api/v1/users/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, lastName, email, message }),
-  })
-    .then(() => location.reload())
-    .catch((err) => console.error(err));
+    body: JSON.stringify({ firstName, lastName, age }),
+  }).then(() => location.reload());
 }
